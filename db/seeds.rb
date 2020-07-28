@@ -8,10 +8,3 @@
 
 
 
-#TodoData
-Todo.create(name: "take out trash")
-
-
-
-#USER data
-User.create(name: "gerrbear")

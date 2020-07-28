@@ -15,15 +15,18 @@ ActiveRecord::Schema.define(version: 2020_07_27_222344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "todos", force: :cascade do |t|
-    t.string "name"
-    t.boolean "completed"
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.boolean "completed", default: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
