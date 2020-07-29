@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'users/:id/notes', to: "user#notes"
+  get 'users', to: "users#index"
+  get 'notes', to: "notes#index"
+  get 'users/:id', to: "users#show"
   get 'notes/:id', to: "notes#show"
   get :logged_in, to: "sessions#logged_in"
   delete 'notes/:id', to: "notes#destroy"
