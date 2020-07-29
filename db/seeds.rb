@@ -6,5 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require "faker"
+
+# User.destroy_all
+# Note.destroy_all
+
+# User.create(name: 'alex', password: 'shucks')
+# User.create(name: 'bob', password: 'alright')
+
+# 20.times do 
+#   Note.create({title: Faker::Hipster.word, description: Faker::Hipster.paragraph(sentence_count: rand(0...5)), completed: false, user_id: rand(1..2)})
+# end
 
 
