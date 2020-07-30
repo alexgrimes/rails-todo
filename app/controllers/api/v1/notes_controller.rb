@@ -1,27 +1,17 @@
-class NotesController < ApplicationController
+class Api::V1::NotesController < ApplicationController
 
   def index
-    notes = Note.all
-    render json: notes
+    @notes = Note.all
+    render json: @notes
   end 
 
   def show
-    note = Note.find(params[:id])
-    
-    if note 
-      render json: {
-        status: "Success",
-        note: note
-      }
-    else 
-      render json: {
-        status: 401
-      }
-    end
+    @note = Note.find_by(title: params[:title])
+    render json: @note
   end 
 
   def destroy
-    note = Note.find(params[:id])
+    @note = Note.find_by(slug: params[:slug])
     note.destroy
     render json: {
         status: "Note Deleted"
@@ -29,7 +19,7 @@ class NotesController < ApplicationController
   end 
 
   def create 
-    note = Note.create(
+    @note = Note.create(
       title: params[:title],
       description: params[:description],
       user_id: params[:user_id],
@@ -37,7 +27,7 @@ class NotesController < ApplicationController
     if note 
       render json: {
         status: :created,
-        note: note
+        note: @note
       }
     else 
       render json: { status: 401 }
@@ -45,7 +35,7 @@ class NotesController < ApplicationController
   end 
 
   def update
-    note = Note.find(params[:id])
+    @note = Note.find(params[:id])
 
     if note 
       if params[:title]
@@ -60,7 +50,7 @@ class NotesController < ApplicationController
 
       render json: {
         status: "Success",
-        note: note
+        note: @note
       }
 
     else 
