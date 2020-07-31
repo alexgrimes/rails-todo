@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post 'notes/new', to: "notes#create"
       patch 'notes/:id', to: "notes#update"
   
-      post '/api/v1/auth', to: "auth#create"
+      post '/auth', to: "auth#create"
       get '/current_user', to: "auth#show"
       resources :registrations, only: [:create]
       root to: "static#home"

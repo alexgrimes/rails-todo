@@ -1,14 +1,14 @@
-class Api::v1::AuthController < ApplicationController
+class Api::V1::AuthController < ApplicationController
   def create
-    user = User.find_by(name: params[:name]
-     
-    if user && user.athenticate(params[:password])
-      payload = {user_id: user.id}
+    user = User.find_by(name: params[:name])
+    
+    if user && user.authenticate(params[:password])
+      payload = {id: user.id}
       token= JWT.encode(payload, 'SECRET', 'HS256')  
-      
       render json: { id: user.id, name: user.name, token: token}
     else 
-      render json: { error: 'Invalid name or password' }, status: 401
+      render json: { error: 'Invalid name or password' }
+    end
   end
 
   def show
